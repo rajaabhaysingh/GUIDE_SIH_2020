@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1030234037293",
+    "firebase_url": "https://iiits-map.firebaseio.com",
+    "project_id": "iiits-map",
+    "storage_bucket": "iiits-map.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030234037293:android:51801ce70467bc96c0eca4",
+        "android_client_info": {
+          "package_name": "com.test.mark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030234037293-e4dao4v5n2oacrh76sfadb8lu8g93hb9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.test.mark",
+            "certificate_hash": "9afe326a3b64e36a287319a98803d7c1a3fda550"
+          }
+        },
+        {
+          "client_id": "1030234037293-1704v5bom29h490ie41uosqh565d2e0k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYNakHFq4P5P7wbprDvPFvvgXeT4hop8o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030234037293-1704v5bom29h490ie41uosqh565d2e0k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

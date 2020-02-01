@@ -11,13 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.res.Resources;
-import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -25,14 +24,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -50,6 +47,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -57,12 +55,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.AutocompletePrediction;
 import com.google.android.libraries.places.api.model.AutocompleteSessionToken;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.api.model.TypeFilter;
-import com.google.android.libraries.places.api.net.FetchPlaceRequest;
-import com.google.android.libraries.places.api.net.FetchPlaceResponse;
-import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest;
-import com.google.android.libraries.places.api.net.FindAutocompletePredictionsResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
@@ -71,15 +63,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mancj.materialsearchbar.MaterialSearchBar;
-import com.mancj.materialsearchbar.adapter.SuggestionsAdapter;
 import com.skyfishjy.library.RippleBackground;
 
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
@@ -98,6 +96,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private RippleBackground rippleBackground;
     private ImageView imageView;
+    private Set<LatLng> verifiedLatLng;
+    private List<Marker> currMarkers;
 
     private ImageButton currentLocationButton, compassButton, submitPlaceButton;
 
@@ -123,6 +123,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         // Create/Set toolbar as actionbar
         toolbar = (FrameLayout) findViewById(R.id.toolbar_container);
+
+        verifiedLatLng = new HashSet<>();
+        currMarkers = new ArrayList<>();
 
         //making status bar transparent 25B4B4B4
         // Check if the version of Android is Lollipop or higher
@@ -199,121 +202,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 {
                     //openVoiceRecognizer();
                 }
-            }
-        });
-
-        //searching for places and inflating predictions
-        materialSearchBar.addTextChangeListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                FindAutocompletePredictionsRequest predictionsRequest = FindAutocompletePredictionsRequest.builder()
-                        .setCountry("in")
-                        .setTypeFilter(TypeFilter.ADDRESS)
-                        .setSessionToken(token)
-                        .setQuery(s.toString())
-                        .build();
-                placesClient.findAutocompletePredictions(predictionsRequest).addOnCompleteListener(new OnCompleteListener<FindAutocompletePredictionsResponse>() {
-                    @Override
-                    public void onComplete(@NonNull Task<FindAutocompletePredictionsResponse> task) {
-                        if (task.isSuccessful())
-                        {
-                            FindAutocompletePredictionsResponse predictionsResponse = task.getResult();
-                            if (predictionsResponse != null)
-                            {
-                                predictionList = predictionsResponse.getAutocompletePredictions();
-                                List<String> suggestionList = new ArrayList<>();
-                                for (int i=0; i<predictionList.size(); i++)
-                                {
-                                    AutocompletePrediction prediction = predictionList.get(i);
-                                    suggestionList.add(prediction.getFullText(null).toString());
-                                }
-                                materialSearchBar.updateLastSuggestions(suggestionList);
-                                if (!materialSearchBar.isSuggestionsVisible())
-                                {
-                                    materialSearchBar.showSuggestionsList();
-                                }
-                            }
-                        }else {
-                            Toast.makeText(MainActivity.this, "Some error occurred", Toast.LENGTH_SHORT).show();
-                            Log.d("Prediction", "prediction fetching unsuccessful");
-                        }
-                    }
-                });
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        materialSearchBar.setSuggestionsClickListener(new SuggestionsAdapter.OnItemViewClickListener() {
-            @Override
-            public void OnItemClickListener(int position, View v) {
-                //use placeID to get Lat and Long and use that Lat/Long to go to selected location
-                if (position >= predictionList.size())
-                {
-                    return;
-                }
-
-                AutocompletePrediction selectedPrediction = predictionList.get(position);
-                String suggestion = materialSearchBar.getLastSuggestions().get(position).toString();
-                materialSearchBar.setText(suggestion);
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        materialSearchBar.clearSuggestions();
-                    }
-                }, 1000);
-
-                //closing keyboard
-                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                if (inputMethodManager != null)
-                {
-                    inputMethodManager.hideSoftInputFromWindow(materialSearchBar.getWindowToken(), InputMethodManager.HIDE_IMPLICIT_ONLY);
-                }
-
-                String placeId = selectedPrediction.getPlaceId();
-                List<Place.Field> placeFields = Arrays.asList(Place.Field.LAT_LNG);
-
-                FetchPlaceRequest fetchPlaceRequest = FetchPlaceRequest.builder(placeId, placeFields).build();
-                placesClient.fetchPlace(fetchPlaceRequest).addOnSuccessListener(new OnSuccessListener<FetchPlaceResponse>() {
-                    @Override
-                    public void onSuccess(FetchPlaceResponse fetchPlaceResponse) {
-                        Place place = fetchPlaceResponse.getPlace();
-                        Log.d("place found", "place was found : " + place.getName());
-                        LatLng latLng = place.getLatLng();
-                        if (latLng != null)
-                        {
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, DEFAULT_ZOOM));
-                            mMap.setMapType(mMap.MAP_TYPE_HYBRID);
-                        }
-                        materialSearchBar.clearSuggestions();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        if (e instanceof ApiException)
-                        {
-                            ApiException apiException = (ApiException) e;
-                            apiException.printStackTrace();
-                            int statusCode = apiException.getStatusCode();
-                            Toast.makeText(MainActivity.this, "place not found", Toast.LENGTH_SHORT).show();
-                            Log.d("Place not found", "Place not found" + e.getMessage() + " status code : " + statusCode);
-                        }
-                    }
-                });
-            }
-
-            @Override
-            public void OnItemDeleteListener(int position, View v) {
-                materialSearchBar.clearSuggestions();
             }
         });
 
@@ -475,6 +363,32 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 return false;
             }
         });
+
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                if(currMarkers.size() > 0){
+                    currMarkers.get(0).remove();
+                    currMarkers.clear();
+                    return;
+                }
+                MarkerOptions options = new MarkerOptions();
+                options.position(latLng);
+                options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+                Marker marker = mMap.addMarker(options);
+                currMarkers.add(marker);
+                LatLng origin = currMarkers.get(0).getPosition();
+                LatLng dest = latLng;
+
+                // Getting URL to the Google Directions API
+                String url = getDirectionsUrl(origin, dest);
+
+                DownloadTask downloadTask = new DownloadTask();
+
+                // Start downloading json data from Google Directions API
+                downloadTask.execute(url);
+            }
+        });
     }
 
     //here we are trying to know whether user enabled the location in above steps or denied
@@ -611,8 +525,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int size = (int) dataSnapshot.getChildrenCount();
-                Marker[] allMarkers = new Marker[size];
                 mMap.clear();
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     Log.d(TAG, "onDataChange: " + ds);
@@ -621,9 +533,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         double latitude = obj.get("lat");
                         double longitude = obj.get("lng");
                         LatLng latLng = new LatLng(latitude, longitude);
-                        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)).position(latLng).title("Custom Added"));
+                        verifiedLatLng.add(latLng);
+                        Marker marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)).position(latLng).title("Custom Added"));
+//                        currMarkers.add(marker);
                     }
                     catch (Exception e){
                         Log.d(TAG, "onDataChange: Error " + e);
@@ -636,6 +548,151 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             }
         });
+    }
+
+    private class DownloadTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... url) {
+
+            String data = "";
+
+            try {
+                data = downloadUrl(url[0]);
+            } catch (Exception e) {
+                Log.d("Background Task", e.toString());
+            }
+            return data;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            ParserTask parserTask = new ParserTask();
+
+
+            parserTask.execute(result);
+
+        }
+
+    }
+
+    private class ParserTask extends AsyncTask<String, Integer, List<List<HashMap<String, String>>>> {
+
+        // Parsing the data in non-ui thread
+        @Override
+        protected List<List<HashMap<String, String>>> doInBackground(String... jsonData) {
+
+            JSONObject jObject;
+            List<List<HashMap<String, String>>> routes = null;
+
+            try {
+                jObject = new JSONObject(jsonData[0]);
+                DirectionsJSONParser parser = new DirectionsJSONParser();
+
+                routes = parser.parse(jObject);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return routes;
+        }
+
+        @Override
+        protected void onPostExecute(List<List<HashMap<String, String>>> result) {
+            ArrayList<LatLng> points = null;
+            PolylineOptions lineOptions = null;
+            MarkerOptions markerOptions = new MarkerOptions();
+
+            for (int i = 0; i < result.size(); i++) {
+                points = new ArrayList<>();
+                lineOptions = new PolylineOptions();
+
+                List<HashMap<String, String>> path = result.get(i);
+
+                for (int j = 0; j < path.size(); j++) {
+                    HashMap<String, String> point = path.get(j);
+
+                    double lat = Double.parseDouble(point.get("lat"));
+                    double lng = Double.parseDouble(point.get("lng"));
+                    LatLng position = new LatLng(lat, lng);
+
+                    points.add(position);
+                }
+
+                lineOptions.addAll(points);
+                lineOptions.width(12);
+                lineOptions.color(Color.RED);
+                lineOptions.geodesic(true);
+
+            }
+
+            // Drawing polyline in the Google Map for the i-th route
+            if(lineOptions != null)
+                mMap.addPolyline(lineOptions);
+            else
+                Toast.makeText(MainActivity.this, "No Route Found", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private String getDirectionsUrl(LatLng origin, LatLng dest) {
+
+        // Origin of route
+        String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
+
+        // Destination of route
+        String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
+
+        // Sensor enabled
+        String sensor = "sensor=false";
+        String mode = "mode=walking";
+
+        // Building the parameters to the web service
+        String parameters = str_origin + "&" + str_dest + "&" + sensor + "&" + mode;
+
+        // Output format
+        String output = "json";
+
+        // Building the url to the web service
+        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters;
+
+
+        return url;
+    }
+
+    private String downloadUrl(String strUrl) throws IOException {
+        String data = "";
+        InputStream iStream = null;
+        HttpURLConnection urlConnection = null;
+        try {
+            URL url = new URL(strUrl);
+
+            urlConnection = (HttpURLConnection) url.openConnection();
+
+            urlConnection.connect();
+
+            iStream = urlConnection.getInputStream();
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(iStream));
+
+            StringBuffer sb = new StringBuffer();
+
+            String line = "";
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+
+            data = sb.toString();
+
+            br.close();
+
+        } catch (Exception e) {
+            Log.d("Exception", e.toString());
+        } finally {
+            iStream.close();
+            urlConnection.disconnect();
+        }
+        return data;
     }
 
 }

@@ -3,6 +3,9 @@
     <string name="title_activity_map">MapActivity</string>
     <string name="category_prompt">Choose category</string>
 
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
     <string-array name="categories_array">
         <item>Office</item>
         <item>Classroom</item>

@@ -621,7 +621,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         double latitude = obj.get("lat");
                         double longitude = obj.get("lng");
                         LatLng latLng = new LatLng(latitude, longitude);
-                        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
                         mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)).position(latLng).title("Custom Added"));
                     }

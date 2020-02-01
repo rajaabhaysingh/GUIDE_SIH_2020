@@ -96,7 +96,7 @@ public class PlaceActivity extends AppCompatActivity implements OnMapReadyCallba
 
             // Set paddingTop of toolbar to height of status bar.
             // Fixes status bar covers toolbar issue
-            toolbarContainer.setPadding(0, getStatusBarHeight(), 0, 0);
+            toolbarContainer.setPadding(16, getStatusBarHeight(), 16, 16);
             //toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
         }
 

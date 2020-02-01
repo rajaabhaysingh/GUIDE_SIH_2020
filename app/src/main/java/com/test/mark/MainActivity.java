@@ -547,12 +547,39 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         int id = menuItem.getItemId();
 
-        if (id == R.id.home) {
+        switch (id) {
+            case R.id.home:
+                Intent homeIntent = new Intent(MainActivity.this, MainActivity.class);
+                homeIntent.putExtra("key", "main_activity"); //Optional parameters
+                MainActivity.this.startActivity(homeIntent);
+                break;
 
-        } else if (id == R.id.categories) {
+            case R.id.calender:
+                Intent calenderIntent = new Intent(MainActivity.this, CalenderActivity.class);
+                calenderIntent.putExtra("key", "calender_activity"); //Optional parameters
+                MainActivity.this.startActivity(calenderIntent);
+                break;
 
-        } else if (id == R.id.trending) {
+            case R.id.trending:
+                Intent trendingIntent = new Intent(MainActivity.this, CurrentActivity.class);
+                trendingIntent.putExtra("key", "trending_activity"); //Optional parameters
+                MainActivity.this.startActivity(trendingIntent);
+                break;
 
+            case R.id.account:
+                Intent accountIntent = new Intent(MainActivity.this, AccountActivity.class);
+                accountIntent.putExtra("key", "account_activity"); //Optional parameters
+                MainActivity.this.startActivity(accountIntent);
+                break;
+
+            case R.id.help:
+                Intent helpIntent = new Intent(MainActivity.this, HelpActivity.class);
+                helpIntent.putExtra("key", "help_activity"); //Optional parameters
+                MainActivity.this.startActivity(helpIntent);
+                break;
+
+            default:
+                return false;
         }
 
         //TODO: continue it...

@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -66,6 +67,7 @@ public class PlaceActivity extends AppCompatActivity implements OnMapReadyCallba
     private LinearLayout swipeLinearLayout, metaContents;
 
     private ImageButton currentLocationButton;
+    private Button updateLocationButton;
 
     private RippleBackground rippleBackground;
 
@@ -102,6 +104,7 @@ public class PlaceActivity extends AppCompatActivity implements OnMapReadyCallba
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         currentLocationButton = findViewById(R.id.current_location_image_button);
+        updateLocationButton = findViewById(R.id.update_location_button);
         rippleBackground=(RippleBackground)findViewById(R.id.content);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -115,7 +118,7 @@ public class PlaceActivity extends AppCompatActivity implements OnMapReadyCallba
 
         //INFLATING RECYCLER VIEW
 
-        //Category Recycler view
+        //Picture Recycler view
         pictureRecyclerView = findViewById(R.id.recycler_view_photos_places);
 
         LinearLayoutManager picturesLayoutManager = new LinearLayoutManager(this);
@@ -232,6 +235,14 @@ public class PlaceActivity extends AppCompatActivity implements OnMapReadyCallba
             }
         });
 
+        updateLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(PlaceActivity.this, UpdateSubmitActivity.class);
+                myIntent.putExtra("key", "form_activity"); //Optional parameters
+                PlaceActivity.this.startActivity(myIntent);
+            }
+        });
 
     }
 

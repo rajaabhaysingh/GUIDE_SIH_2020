@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">GUIDE</string>
     <string name="title_activity_map">MapActivity</string>
+    <string name="category_prompt">Choose category</string>
+
+    <string-array name="categories_array">
+        <item>Office</item>
+        <item>Classroom</item>
+        <item>Lab</item>
+        <item>Hostel</item>
+        <item>Living Area</item>
+        <item>Canteen</item>
+        <item>Mess</item>
+        <item>Outdoor</item>
+        <item>Playground</item>
+    </string-array>
+
 </resources>

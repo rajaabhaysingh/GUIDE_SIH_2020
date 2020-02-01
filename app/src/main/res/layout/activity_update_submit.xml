@@ -81,8 +81,8 @@
             android:id="@+id/update_submit_image_recycler_view"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -134,17 +134,30 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="DETAILS"
+            android:textAlignment="center"
+            android:textColor="#5D5D5D"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ScrollView
             android:id="@+id/parentLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:scrollbars="none"
             app:layout_constraintBottom_toTopOf="@+id/save_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/textView6">
 
             <LinearLayout
                 android:id="@+id/place_scroll_view_linear_layout"
@@ -152,42 +165,19 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    android:text="DETAILS"
-                    android:textAlignment="center"
-                    android:textColor="#5D5D5D"
-                    android:textStyle="bold" />
 
-                <LinearLayout
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:background="@drawable/form_input_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:entries="@array/categories_array"
+                    android:prompt="@string/category_prompt"
                     android:layout_marginLeft="32dp"
                     android:layout_marginRight="32dp"
-                    android:background="@drawable/form_input_bg"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:paddingHorizontal="8dp"
+                    />
 
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:text="TextView"
-                        android:textColor="#5D5D5D" />
-
-                    <Spinner
-                        android:id="@+id/spinner"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/down_arrow" />
-
-                </LinearLayout>
 
                 <EditText
                     android:id="@+id/floor_number_form"
@@ -203,7 +193,9 @@
                     android:inputType="textPersonName"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:textColor="#5D5D5D" />
+                    android:textColor="#5D5D5D"
+                    android:textColorHint="#5d5d5d"
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/room_number_form"
@@ -215,10 +207,13 @@
                     android:background="@drawable/form_input_bg"
                     android:ems="10"
                     android:gravity="center_vertical"
+                    android:hint="Enter room Number"
                     android:inputType="textPersonName"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:textColor="#5D5D5D" />
+                    android:textColor="#5D5D5D"
+                    android:textColorHint="#5d5d5d"
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/open_time_form"
@@ -230,10 +225,13 @@
                     android:background="@drawable/form_input_bg"
                     android:ems="10"
                     android:gravity="center_vertical"
+                    android:hint="Enter Open Time"
                     android:inputType="textPersonName"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:textColor="#5D5D5D" />
+                    android:textColor="#5D5D5D"
+                    android:textColorHint="#5d5d5d"
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/locality_form"
@@ -245,10 +243,13 @@
                     android:background="@drawable/form_input_bg"
                     android:ems="10"
                     android:gravity="center_vertical"
+                    android:hint="Enter Locality"
                     android:inputType="textPersonName"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:textColor="#5D5D5D" />
+                    android:textColor="#5D5D5D"
+                    android:textColorHint="#5d5d5d"
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/comments_form"
@@ -259,10 +260,16 @@
                     android:layout_marginRight="32dp"
                     android:background="@drawable/form_input_bg"
                     android:ems="10"
+                    android:gravity="start"
+                    android:hint="Comments"
                     android:inputType="textPersonName"
                     android:paddingLeft="8dp"
+                    android:paddingTop="5dp"
                     android:paddingRight="8dp"
-                    android:textColor="#5D5D5D" />
+                    android:textColor="#5D5D5D"
+                    android:textColorHint="#5d5d5d"
+                    android:textSize="14sp" />
+
             </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

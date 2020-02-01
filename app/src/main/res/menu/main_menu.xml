@@ -11,12 +11,12 @@
             android:icon="@drawable/icon_home" />
 
         <item
-            android:title="Categories"
-            android:id="@+id/categories"
-            android:icon="@drawable/icon_categories" />
+            android:title="Calender"
+            android:id="@+id/calender"
+            android:icon="@drawable/icon_calender" />
 
         <item
-            android:title="Trending"
+            android:title="Current Activities"
             android:id="@+id/trending"
             android:icon="@drawable/icon_trending" />
 
@@ -26,43 +26,22 @@
     <group android:checkableBehavior="single">
 
 
-        <item
-            android:title="History"
-            android:id="@+id/history"
-            android:icon="@drawable/icon_history" />
 
         <item
             android:title="Account"
             android:id="@+id/account"
             android:icon="@drawable/icon_account" />
 
+        <item
+            android:title="Help"
+            android:id="@+id/help"
+            android:icon="@drawable/icon_about" />
+
 
 
     </group>
 
 
-    <item android:title="More">
-
-
-        <menu>
-
-
-            <item
-                android:title="Contact Us"
-                android:id="@+id/contact"
-                android:icon="@drawable/icon_contact" />
-
-
-            <item
-                android:title="About"
-                android:id="@+id/about"
-                android:icon="@drawable/icon_about" />
-
-
-        </menu>
-
-
-    </item>
 
 
 </menu>

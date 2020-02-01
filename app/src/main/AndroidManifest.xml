@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateSubmitActivity"></activity>
+        <activity android:name=".AccountActivity"></activity>
+        <activity android:name=".CurrentActivity" />
+        <activity android:name=".CalenderActivity" />
+        <activity android:name=".HelpActivity" />
+        <activity android:name=".UpdateSubmitActivity" />
         <activity android:name=".ImageViewActivity" />
         <activity
             android:name=".SearchCategoryActivity"

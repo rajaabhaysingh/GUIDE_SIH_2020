@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.res.Resources;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -45,7 +46,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -61,16 +65,26 @@ import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRe
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.mancj.materialsearchbar.adapter.SuggestionsAdapter;
 import com.skyfishjy.library.RippleBackground;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
+
+    private static String TAG = "mainActivityDebug";
 
     FrameLayout toolbar;
 
@@ -347,6 +361,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         trendingRecyclerView.setAdapter(horizontalScrollTrendingAdapter);
         horizontalScrollTrendingAdapter.notifyDataSetChanged();
+
+        addMarkers();
     }
 
     @Override
@@ -560,4 +576,39 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             super.onBackPressed();
         }
     }
+
+    public void addMarkers(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference ref = database.getReference("locations");
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int size = (int) dataSnapshot.getChildrenCount();
+                Marker[] allMarkers = new Marker[size];
+                mMap.clear();
+                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                    Log.d(TAG, "onDataChange: " + ds);
+                    try {
+                        HashMap<String, Double> obj = (HashMap<String, Double>) ds.getValue();
+                        double latitude = obj.get("lat");
+                        double longitude = obj.get("lng");
+                        LatLng latLng = new LatLng(latitude, longitude);
+                        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)).position(latLng).title("Custom Added"));
+                    }
+                    catch (Exception e){
+                        Log.d(TAG, "onDataChange: Error " + e);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 }

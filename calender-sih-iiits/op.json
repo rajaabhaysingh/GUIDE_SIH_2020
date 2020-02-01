@@ -1,0 +1,515 @@
+{
+    "created": "2020-01-30T08:53:53.000Z",
+    "creator": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "end": {
+        "dateTime": "2020-02-03T09:30:00.000+05:30"
+    },
+    "etag": "\"3161084753317000\"",
+    "htmlLink": "https://www.google.com/calendar/event?eid=X2NsbDdpZDI1ZTVqNzRoamI5ZDNsa2hqbWRrcW1lZ2ExYTE4aXNycmMga2V0YW52aWpheS5sMThAaWlpdHMuaW4",
+    "iCalUID": "ejy4EqfrFkKGZFvm5gAAPQ.ol",
+    "id": "_cll7id25e5j74hjb9d3lkhjmdkqmega1a18isrrc",
+    "kind": "calendar#event",
+    "organizer": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "reminders": {
+        "overrides": [
+            {
+                "method": "popup",
+                "minutes": 10
+            }
+        ],
+        "useDefault": false
+    },
+    "sequence": 1,
+    "start": {
+        "dateTime": "2020-02-03T08:45:00.000+05:30"
+    },
+    "status": "confirmed",
+    "summary": "TOC Quiz",
+    "transparency": "transparent",
+    "updated": "2020-02-01T07:32:56.685Z"
+} (2020-02-03T08: 45: 00.000+05: 30) 
+{
+    "attendees": [
+        {
+            "email": "ketanvijay.l18@iiits.in",
+            "organizer": true,
+            "responseStatus": "accepted",
+            "self": true
+        },
+        {
+            "displayName": "Academic Block-1-115 (108)",
+            "email": "iiits.in_31323639343335343930@resource.calendar.google.com",
+            "resource": true,
+            "responseStatus": "accepted"
+        }
+    ],
+    "created": "2020-02-01T06:43:24.000Z",
+    "creator": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "end": {
+        "dateTime": "2020-02-03T10:15:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "etag": "\"3161078824052000\"",
+    "guestsCanInviteOthers": false,
+    "guestsCanSeeOtherGuests": false,
+    "htmlLink": "https://www.google.com/calendar/event?eid=MzFkdXFwYnZ2OTVkczZiM2w3ZTlvY3Y1ZGNfMjAyMDAyMDNUMDQxNTAwWiBrZXRhbnZpamF5LmwxOEBpaWl0cy5pbg",
+    "iCalUID": "31duqpbvv95ds6b3l7e9ocv5dc@google.com",
+    "id": "31duqpbvv95ds6b3l7e9ocv5dc_20200203T041500Z",
+    "kind": "calendar#event",
+    "location": "Academic Block-1-115 (108)",
+    "organizer": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "originalStartTime": {
+        "dateTime": "2020-02-03T09:45:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "recurringEventId": "31duqpbvv95ds6b3l7e9ocv5dc",
+    "reminders": {
+        "useDefault": true
+    },
+    "sequence": 0,
+    "start": {
+        "dateTime": "2020-02-03T09:45:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "status": "confirmed",
+    "summary": "AI",
+    "updated": "2020-02-01T06:43:32.026Z"
+} (2020-02-03T09: 45: 00.000+05: 30) 
+{
+    "attendees": [
+        {
+            "email": "ketanvijay.l18@iiits.in",
+            "organizer": true,
+            "responseStatus": "accepted",
+            "self": true
+        },
+        {
+            "displayName": "Academic Block-1-113 (108)",
+            "email": "iiits.in_3132343135313232343632@resource.calendar.google.com",
+            "resource": true,
+            "responseStatus": "accepted"
+        }
+    ],
+    "created": "2020-02-01T06:42:06.000Z",
+    "creator": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "end": {
+        "dateTime": "2020-02-03T12:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "etag": "\"3161078858134000\"",
+    "guestsCanInviteOthers": false,
+    "guestsCanSeeOtherGuests": false,
+    "htmlLink": "https://www.google.com/calendar/event?eid=M3NjbXJrMG0wMWZjMGdzOWVxcGJrbGxncnRfMjAyMDAyMDNUMDUzMDAwWiBrZXRhbnZpamF5LmwxOEBpaWl0cy5pbg",
+    "iCalUID": "3scmrk0m01fc0gs9eqpbkllgrt@google.com",
+    "id": "3scmrk0m01fc0gs9eqpbkllgrt_20200203T053000Z",
+    "kind": "calendar#event",
+    "location": "Academic Block-1-113 (108)",
+    "organizer": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "originalStartTime": {
+        "dateTime": "2020-02-03T11:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "recurringEventId": "3scmrk0m01fc0gs9eqpbkllgrt",
+    "reminders": {
+        "useDefault": true
+    },
+    "sequence": 1,
+    "start": {
+        "dateTime": "2020-02-03T11:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "status": "confirmed",
+    "summary": "TOC",
+    "updated": "2020-02-01T06:43:49.067Z"
+} (2020-02-03T11: 00: 00.000+05: 30) 
+{
+    "attendees": [
+        {
+            "email": "ketanvijay.l18@iiits.in",
+            "organizer": true,
+            "responseStatus": "accepted",
+            "self": true
+        },
+        {
+            "displayName": "Academic Block-1-113 (108)",
+            "email": "iiits.in_3132343135313232343632@resource.calendar.google.com",
+            "resource": true,
+            "responseStatus": "accepted"
+        }
+    ],
+    "created": "2020-02-01T06:44:54.000Z",
+    "creator": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "end": {
+        "dateTime": "2020-02-04T12:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "etag": "\"3161078994270000\"",
+    "guestsCanInviteOthers": false,
+    "guestsCanSeeOtherGuests": false,
+    "htmlLink": "https://www.google.com/calendar/event?eid=NGN0cGl0c3M2YmFjamhwY2tmcHMwOTBubmdfMjAyMDAyMDRUMDUzMDAwWiBrZXRhbnZpamF5LmwxOEBpaWl0cy5pbg",
+    "iCalUID": "4ctpitss6bacjhpckfps090nng@google.com",
+    "id": "4ctpitss6bacjhpckfps090nng_20200204T053000Z",
+    "kind": "calendar#event",
+    "location": "Academic Block-1-113 (108)",
+    "organizer": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "originalStartTime": {
+        "dateTime": "2020-02-04T11:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "recurringEventId": "4ctpitss6bacjhpckfps090nng",
+    "reminders": {
+        "useDefault": true
+    },
+    "sequence": 0,
+    "start": {
+        "dateTime": "2020-02-04T11:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "status": "confirmed",
+    "summary": "ASE1",
+    "updated": "2020-02-01T06:44:57.135Z"
+} (2020-02-04T11: 00: 00.000+05: 30) 
+{
+    "attendees": [
+        {
+            "email": "ketanvijay.l18@iiits.in",
+            "optional": true,
+            "organizer": true,
+            "responseStatus": "accepted",
+            "self": true
+        },
+        {
+            "displayName": "Academic Block-1-113 (108)",
+            "email": "iiits.in_3132343135313232343632@resource.calendar.google.com",
+            "resource": true,
+            "responseStatus": "accepted"
+        }
+    ],
+    "created": "2020-02-01T06:46:22.000Z",
+    "creator": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "end": {
+        "dateTime": "2020-02-04T15:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "etag": "\"3161079190000000\"",
+    "guestsCanInviteOthers": false,
+    "guestsCanSeeOtherGuests": false,
+    "htmlLink": "https://www.google.com/calendar/event?eid=NnA4ZTVuZHUxZ245NTNtMTAyZGwwNTUyYTVfMjAyMDAyMDRUMDgzMDAwWiBrZXRhbnZpamF5LmwxOEBpaWl0cy5pbg",
+    "iCalUID": "6p8e5ndu1gn953m102dl0552a5@google.com",
+    "id": "6p8e5ndu1gn953m102dl0552a5_20200204T083000Z",
+    "kind": "calendar#event",
+    "location": "Academic Block-1-113 (108)",
+    "organizer": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "originalStartTime": {
+        "dateTime": "2020-02-04T14:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "recurringEventId": "6p8e5ndu1gn953m102dl0552a5",
+    "reminders": {
+        "useDefault": true
+    },
+    "sequence": 1,
+    "start": {
+        "dateTime": "2020-02-04T14:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "status": "confirmed",
+    "summary": "CCN-B",
+    "updated": "2020-02-01T06:46:35.000Z"
+} (2020-02-04T14: 00: 00.000+05: 30) 
+{
+    "attendees": [
+        {
+            "email": "ketanvijay.l18@iiits.in",
+            "organizer": true,
+            "responseStatus": "accepted",
+            "self": true
+        },
+        {
+            "displayName": "Academic Block-1-113 (108)",
+            "email": "iiits.in_3132343135313232343632@resource.calendar.google.com",
+            "resource": true,
+            "responseStatus": "accepted"
+        }
+    ],
+    "created": "2020-02-01T06:47:24.000Z",
+    "creator": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "end": {
+        "dateTime": "2020-02-05T13:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "etag": "\"3161079304288000\"",
+    "guestsCanInviteOthers": false,
+    "guestsCanSeeOtherGuests": false,
+    "htmlLink": "https://www.google.com/calendar/event?eid=NnVqa2IzaDdqOWU4MzBrbGg3b21ybThzMWtfMjAyMDAyMDVUMDUzMDAwWiBrZXRhbnZpamF5LmwxOEBpaWl0cy5pbg",
+    "iCalUID": "6ujkb3h7j9e830klh7omrm8s1k@google.com",
+    "id": "6ujkb3h7j9e830klh7omrm8s1k_20200205T053000Z",
+    "kind": "calendar#event",
+    "location": "Academic Block-1-113 (108)",
+    "organizer": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "originalStartTime": {
+        "dateTime": "2020-02-05T11:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "recurringEventId": "6ujkb3h7j9e830klh7omrm8s1k",
+    "reminders": {
+        "useDefault": true
+    },
+    "sequence": 0,
+    "start": {
+        "dateTime": "2020-02-05T11:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "status": "confirmed",
+    "summary": "TOC-B",
+    "updated": "2020-02-01T06:47:32.144Z"
+} (2020-02-05T11: 00: 00.000+05: 30) 
+{
+    "attendees": [
+        {
+            "email": "ketanvijay.l18@iiits.in",
+            "organizer": true,
+            "responseStatus": "accepted",
+            "self": true
+        },
+        {
+            "displayName": "Academic Block-1-113 (108)",
+            "email": "iiits.in_3132343135313232343632@resource.calendar.google.com",
+            "resource": true,
+            "responseStatus": "accepted"
+        }
+    ],
+    "created": "2020-02-01T06:47:59.000Z",
+    "creator": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "end": {
+        "dateTime": "2020-02-05T15:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "etag": "\"3161079367752000\"",
+    "guestsCanInviteOthers": false,
+    "guestsCanSeeOtherGuests": false,
+    "htmlLink": "https://www.google.com/calendar/event?eid=N2dvOXBkNGNsZTg5NmpsMHR1M2Jqb2E1ZnJfMjAyMDAyMDVUMDgzMDAwWiBrZXRhbnZpamF5LmwxOEBpaWl0cy5pbg",
+    "iCalUID": "7go9pd4cle896jl0tu3bjoa5fr@google.com",
+    "id": "7go9pd4cle896jl0tu3bjoa5fr_20200205T083000Z",
+    "kind": "calendar#event",
+    "location": "Academic Block-1-113 (108)",
+    "organizer": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "originalStartTime": {
+        "dateTime": "2020-02-05T14:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "recurringEventId": "7go9pd4cle896jl0tu3bjoa5fr",
+    "reminders": {
+        "useDefault": true
+    },
+    "sequence": 0,
+    "start": {
+        "dateTime": "2020-02-05T14:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "status": "confirmed",
+    "summary": "AI-B",
+    "updated": "2020-02-01T06:48:03.876Z"
+} (2020-02-05T14: 00: 00.000+05: 30) 
+{
+    "attendees": [
+        {
+            "email": "ketanvijay.l18@iiits.in",
+            "organizer": true,
+            "responseStatus": "accepted",
+            "self": true
+        },
+        {
+            "displayName": "Academic Block-1-113 (108)",
+            "email": "iiits.in_3132343135313232343632@resource.calendar.google.com",
+            "resource": true,
+            "responseStatus": "accepted"
+        }
+    ],
+    "created": "2020-02-01T06:48:38.000Z",
+    "creator": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "end": {
+        "dateTime": "2020-02-05T18:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "etag": "\"3161079444054000\"",
+    "guestsCanInviteOthers": false,
+    "guestsCanSeeOtherGuests": false,
+    "htmlLink": "https://www.google.com/calendar/event?eid=MTFmYWVwaTV0NWVqZHJzbzJrMG5tNHA3YnVfMjAyMDAyMDVUMTEzMDAwWiBrZXRhbnZpamF5LmwxOEBpaWl0cy5pbg",
+    "iCalUID": "11faepi5t5ejdrso2k0nm4p7bu@google.com",
+    "id": "11faepi5t5ejdrso2k0nm4p7bu_20200205T113000Z",
+    "kind": "calendar#event",
+    "location": "Academic Block-1-113 (108)",
+    "organizer": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "originalStartTime": {
+        "dateTime": "2020-02-05T17:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "recurringEventId": "11faepi5t5ejdrso2k0nm4p7bu",
+    "reminders": {
+        "useDefault": true
+    },
+    "sequence": 0,
+    "start": {
+        "dateTime": "2020-02-05T17:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "status": "confirmed",
+    "summary": "ASE Tut",
+    "updated": "2020-02-01T06:48:42.027Z"
+} (2020-02-05T17: 00: 00.000+05: 30) 
+{
+    "attendees": [
+        {
+            "email": "ketanvijay.l18@iiits.in",
+            "organizer": true,
+            "responseStatus": "accepted",
+            "self": true
+        },
+        {
+            "displayName": "Academic Block-1-113 (108)",
+            "email": "iiits.in_3132343135313232343632@resource.calendar.google.com",
+            "resource": true,
+            "responseStatus": "accepted"
+        }
+    ],
+    "created": "2020-02-01T06:49:18.000Z",
+    "creator": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "end": {
+        "dateTime": "2020-02-06T10:45:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "etag": "\"3161079526428000\"",
+    "guestsCanInviteOthers": false,
+    "guestsCanSeeOtherGuests": false,
+    "htmlLink": "https://www.google.com/calendar/event?eid=MXQyb2UwMjZtbWxyNjM1MDN1NmFnbnBpcjRfMjAyMDAyMDZUMDQxNTAwWiBrZXRhbnZpamF5LmwxOEBpaWl0cy5pbg",
+    "iCalUID": "1t2oe026mmlr63503u6agnpir4@google.com",
+    "id": "1t2oe026mmlr63503u6agnpir4_20200206T041500Z",
+    "kind": "calendar#event",
+    "location": "Academic Block-1-113 (108)",
+    "organizer": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "originalStartTime": {
+        "dateTime": "2020-02-06T09:45:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "recurringEventId": "1t2oe026mmlr63503u6agnpir4",
+    "reminders": {
+        "useDefault": true
+    },
+    "sequence": 0,
+    "start": {
+        "dateTime": "2020-02-06T09:45:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "status": "confirmed",
+    "summary": "ASE-1-B",
+    "updated": "2020-02-01T06:49:23.214Z"
+} (2020-02-06T09: 45: 00.000+05: 30) 
+{
+    "attendees": [
+        {
+            "email": "ketanvijay.l18@iiits.in",
+            "optional": true,
+            "organizer": true,
+            "responseStatus": "accepted",
+            "self": true
+        },
+        {
+            "displayName": "Academic Block-1-113 (108)",
+            "email": "iiits.in_3132343135313232343632@resource.calendar.google.com",
+            "resource": true,
+            "responseStatus": "accepted"
+        }
+    ],
+    "created": "2020-02-01T06:49:58.000Z",
+    "creator": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "end": {
+        "dateTime": "2020-02-06T15:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "etag": "\"3161079605438000\"",
+    "guestsCanInviteOthers": false,
+    "guestsCanSeeOtherGuests": false,
+    "htmlLink": "https://www.google.com/calendar/event?eid=NjU1dWhxOGszbDlobm9tM3ZtZ2dkczVlZjFfMjAyMDAyMDZUMDgzMDAwWiBrZXRhbnZpamF5LmwxOEBpaWl0cy5pbg",
+    "iCalUID": "655uhq8k3l9hnom3vmggds5ef1@google.com",
+    "id": "655uhq8k3l9hnom3vmggds5ef1_20200206T083000Z",
+    "kind": "calendar#event",
+    "location": "Academic Block-1-113 (108)",
+    "organizer": {
+        "email": "ketanvijay.l18@iiits.in",
+        "self": true
+    },
+    "originalStartTime": {
+        "dateTime": "2020-02-06T14:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "recurringEventId": "655uhq8k3l9hnom3vmggds5ef1",
+    "reminders": {
+        "useDefault": true
+    },
+    "sequence": 0,
+    "start": {
+        "dateTime": "2020-02-06T14:00:00.000+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "status": "confirmed",
+    "summary": "CCN-B",
+    "updated": "2020-02-01T06:50:02.719Z"
+} (2020-02-06T14: 00: 00.000+05: 30) 
